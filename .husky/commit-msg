@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+commit_msg_file="$1"
+
+if [ ! -f "$commit_msg_file" ]; then
+  echo "Error: Commit message file not found: $commit_msg_file"
+  exit 1
+fi
+
+commit_msg=$(head -n1 "$commit_msg_file")
+
+if ! echo "$commit_msg" | grep -E -q '^(feat|fix|chore|docs|refactor|release|wip|hotfix): .+'; then
+    echo "⛔️ Invalid commit message format!"
+    echo "Commit message must follow the pattern: <type>: <description>"
+    echo "Where <type> is one of: feat|fix|chore|docs|refactor|release|wip|hotfix"
+    echo "Example: 'feat: add new user authentication feature'"
+    exit 1
+fi

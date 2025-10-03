@@ -1,0 +1,22 @@
+{
+  "name": "secompp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No test framework specified. Please update this script to run your tests, e.g., with Jest or Mocha.\" && exit 1",
+    "dev": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\"",
+    "dev:backend": "cd apps/platform-api && yarn start:dev",
+    "dev:frontend": "cd apps/platform-ui && yarn dev",
+    "start": "concurrently \"yarn start:backend\" \"yarn start:frontend\"",
+    "prepare": "husky"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
